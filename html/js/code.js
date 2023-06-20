@@ -21,7 +21,7 @@ function doLogin()
 	let tmp = {login:login,password:password};
 //	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
-	console.log("login: "+login+ " password: "+password);
+	// console.log("login: "+login+ " password: "+password);
 
 	let url = urlBase + '/Login.' + extension;
 
@@ -29,7 +29,11 @@ function doLogin()
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-	console.log(xhr.getAllResponseHeaders());
+
+	if (xhr.getAllResponseHeaders) {
+		var headers = xhr.getAllResponseHeader();
+		alert(headers);
+	}
 
 	try
 	{
