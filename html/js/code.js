@@ -29,17 +29,17 @@ function doLogin()
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-	console.log("CORS 1");
+	console.log(xhr.getAllResponseHeaders());
 
 	try
 	{
 		xhr.onreadystatechange = function()
 		{
-			console.log("CORS 2");
+			console.log("CORS 1");
 
 			if (this.readyState == 4 && this.status == 200)
 			{
-				console.log("CORS 3");
+				console.log("CORS 2");
 
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
