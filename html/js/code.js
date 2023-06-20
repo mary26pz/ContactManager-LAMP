@@ -28,25 +28,23 @@ function doLogin()
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+	// let xhrOpt = new XMLHttpRequest();
+	// xhrOpt.open("OPTION", url, true);
+	// xhrOpt.setRequestHeader("Access-Control-Allow-Origin", "*");
 
 	if (xhr.getAllResponseHeaders()) {
 		var headers = xhr.getAllResponseHeaders();
 		alert(headers);
 	} else{
-		console.log("no");
+		console.log("none");
 	}
 
 	try
 	{
 		xhr.onreadystatechange = function()
 		{
-			console.log("CORS 1");
-
 			if (this.readyState == 4 && this.status == 200)
 			{
-				console.log("CORS 2");
-
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
 
