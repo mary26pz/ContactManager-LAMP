@@ -30,9 +30,11 @@ function doLogin()
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 
-	if (xhr.getAllResponseHeaders) {
-		var headers = xhr.getAllResponseHeader();
+	if (xhr.getAllResponseHeaders()) {
+		var headers = xhr.getAllResponseHeaders();
 		alert(headers);
+	} else{
+		console.log("no");
 	}
 
 	try
