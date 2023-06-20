@@ -29,6 +29,8 @@ function doLogin()
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+	console.log("CORS change: ");
+
 	try
 	{
 		xhr.onreadystatechange = function()
