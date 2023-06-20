@@ -1,7 +1,7 @@
 # graphics
 
 ## URL:
-### [http://marywuv.com]
+### http://marywuv.com
 
 ## IP:
 ### 159.65.229.240
