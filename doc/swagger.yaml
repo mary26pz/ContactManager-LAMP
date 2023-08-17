@@ -1,0 +1,184 @@
+swagger: '2.0'
+info:
+  description: API documentation for group 31's contacts app
+  version: 1.0.0
+  title: 31 Contacts
+  contact:
+    # idk how to put more than one email
+    email: chian@knights.ucf.edu
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /Login.php:
+    post:
+      tags:
+      - Users
+      summary: Logs into contacts app
+      operationId: doLogin
+      description: Logs into contacts app
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginItem
+        description: Login
+        schema:
+          $ref: '#/definitions/Login'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /Register.php:
+    post:
+      tags:
+      - Users
+      summary: Registers user to contacts app
+      operationId: doRegister
+      description: Registers user to contacts app
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: registerItem
+        description: Register
+        schema:
+          $ref: '#/definitions/Register'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /AddContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Adds a contact to app for current user
+      operationId: Add Contact
+      description: Adds a contact to app for current user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: addContactItem
+        description: addContact
+        schema:
+          $ref: '#/definitions/AddContact'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /SearchContacts.php:
+    post:
+      tags:
+      - Contacts
+      summary: Searches current contacts by first name
+      operationId: searchContacts
+      description: Searches current contacts by first name
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: searchContactsItem
+        description: Search Contacts
+        schema:
+          $ref: '#/definitions/SearchContacts'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+
+definitions:
+  Login:
+    type: object
+    required:
+    - login
+    - password
+    properties:
+      login:
+        type: string
+        example: "bob"
+      password:
+        type: string
+        example: "secretpassword"
+  Register:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - login
+    - password
+    properties:
+      firstName:
+        type: string
+        example: "Bob"
+      lastName:
+        type: string
+        example: "Builder"
+      login:
+        type: string
+        example: "bob"
+      password:
+        type: string
+        example: "secretpassword"
+  AddContact:
+    type: object
+    required:
+    - user
+    - firstName
+    - lastName
+    - email
+    - phone
+    properties:
+      user:
+        type: string
+        example: "1"
+      firstName:
+        type: string
+        example: "Rob"
+      lastName:
+        type: string
+        example: "Runner"
+      email:
+        type: string
+        example: "robtherunner@gmail.com"
+      phone:
+        type: string
+        example: "5555555555"
+  SearchContacts:
+    type: object
+    required:
+    - search
+    - user
+    properties:
+      search:
+        type: string
+        example: "Rob"
+      user:
+        type: string
+        example: "1"
+
+host: 31contacts.tk
+basePath: /LAMPAPI
+schemes:
+ - http
